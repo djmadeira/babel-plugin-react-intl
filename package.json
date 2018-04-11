@@ -1,5 +1,5 @@
 {
-  "name": "@m/babel-plugin-react-intl",
+  "name": "babel-plugin-react-intl",
   "version": "2.4.0-pre-test1",
   "description": "Extracts string messages for translation from modules that use React Intl.",
   "repository": {
