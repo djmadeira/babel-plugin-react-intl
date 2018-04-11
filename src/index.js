@@ -223,6 +223,8 @@ export default function ({types: t}) {
                 const moduleSourceName = getModuleSourceName(opts);
                 const name = path.get('name');
 
+                file.log.warn(`REACT_INTL DELCARATIVE ${path} ${moduleSourceName} imports expected: ${referencesImport(name, moduleSourceName, COMPONENT_NAMES)}`);
+
                 if (name.referencesImport(moduleSourceName, 'FormattedPlural')) {
                     file.log.warn(
                         `[React Intl] Line ${path.node.loc.start.line}: ` +
@@ -325,6 +327,8 @@ export default function ({types: t}) {
                     // Tag the AST node so we don't try to extract it twice.
                     tagAsExtracted(messageObj);
                 }
+
+                path.log.warn(`REACT_INTL IMPERATIVE ${path} ${moduleSourceName} references import: ${referencesImport(callee, moduleSourceName, FUNCTION_NAMES)}`);
 
                 if (referencesImport(callee, moduleSourceName, FUNCTION_NAMES)) {
                     const messagesObj = path.get('arguments')[0];
